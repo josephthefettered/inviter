@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "Inviter App" }
+   let(:base_title) { "Inviter App" }
 
   describe "Home page" do
 
@@ -13,8 +13,14 @@ describe "Static pages" do
 
     it "should have the title 'Home'" do
       visit '/static_pages/home'
-      page.should have_selector('title', :text => "#{base_title} | Home")
+      page.should have_selector('title', :text => 'Inviter App')
     end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title', :text => '| Home')
+    end
+
   end
 
   describe "Help page" do
